@@ -26,13 +26,12 @@ public class Board {
     
     public static void displayBoard(){
         boolean whiteSquare = true;
-        for (int l = 0; l <Piece.board.length;l++) {
-            for (String[] board : Piece.board) {
-                if (board[l] == null) {
-                    if (whiteSquare) System.out.print(" □");
-                    else System.out.print(" ■");
-                } else {
-                    System.out.println("");                    
+        for (int l = 0; l <Piece.board.length; l++) {
+            for (int w = 0; w <Piece.board[l].length; w++) {
+                if (Piece.board[l][w] == null) {
+                    if (whiteSquare) System.out.print(" □ ");
+                    else System.out.print(" ■ ");
+                } else {             
                 }
                 whiteSquare = !whiteSquare;
             }
