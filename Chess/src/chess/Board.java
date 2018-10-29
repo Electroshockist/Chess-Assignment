@@ -13,26 +13,25 @@ public class Board {
     WhitePiece whiteKing;
     
     public Board(){
-        blackRook[0] = new BlackPiece(0, 7);
-        blackKnight[0] = new BlackPiece(1, 7);
-        blackBishop[0] = new BlackPiece(2, 7); 
-        blackQueen = new BlackPiece(3, 7);
-        blackKing = new BlackPiece(4,7);
-        blackBishop[1] = new BlackPiece(5, 7);                
-        blackKnight[1] = new BlackPiece(6, 7);
-        blackRook[1] = new BlackPiece(7, 7);
+        blackRook[0] = new BlackPiece(0, 7, Piece.rook);
+        blackKnight[0] = new BlackPiece(1, 7, Piece.knight);
+        blackBishop[0] = new BlackPiece(2, 7, Piece.bishop); 
+        blackQueen = new BlackPiece(3, 7, Piece.queen);
+        blackKing = new BlackPiece(4,7, Piece.king);
+        blackBishop[1] = new BlackPiece(5, 7,Piece.bishop);                
+        blackKnight[1] = new BlackPiece(6, 7, Piece.knight);
+        blackRook[1] = new BlackPiece(7, 7, Piece.rook);
         
     }    
     
     public static void displayBoard(){
         boolean whiteSquare = true;
         for (int l = 0; l <Piece.board.length;l++) {
-            for (int w = 0; w < Piece.board.length; w++) {
-                if (Piece.board[w][l] == null) {
+            for (String[] board : Piece.board) {
+                if (board[l] == null) {
                     if (whiteSquare) System.out.print(" □");
                     else System.out.print(" ■");
-                }
-                else {
+                } else {
                     System.out.println("");                    
                 }
                 whiteSquare = !whiteSquare;
