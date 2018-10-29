@@ -13,25 +13,28 @@ public class Board {
     WhitePiece whiteKing;
     
     public Board(){
-        blackRook[0] = new BlackPiece(0, 7, Piece.rook);
-        blackKnight[0] = new BlackPiece(1, 7, Piece.knight);
-        blackBishop[0] = new BlackPiece(2, 7, Piece.bishop); 
-        blackQueen = new BlackPiece(3, 7, Piece.queen);
-        blackKing = new BlackPiece(4,7, Piece.king);
-        blackBishop[1] = new BlackPiece(5, 7,Piece.bishop);                
-        blackKnight[1] = new BlackPiece(6, 7, Piece.knight);
-        blackRook[1] = new BlackPiece(7, 7, Piece.rook);
+        blackRook[0] = new BlackPiece(0, 0, Piece.rook);
+        blackKnight[0] = new BlackPiece(1, 0, Piece.knight);
+        blackBishop[0] = new BlackPiece(2, 0, Piece.bishop); 
+        blackQueen = new BlackPiece(3, 0, Piece.queen);
+        blackKing = new BlackPiece(4,0, Piece.king);
+        blackBishop[1] = new BlackPiece(5, 0,Piece.bishop);                
+        blackKnight[1] = new BlackPiece(6, 0, Piece.knight);
+        blackRook[1] = new BlackPiece(7, 0, Piece.rook);
         
     }    
     
     public static void displayBoard(){
+        System.out.println(Piece.board[0].length);
+        
         boolean whiteSquare = true;
-        for (int l = 0; l <Piece.board.length; l++) {
-            for (int w = 0; w <Piece.board[l].length; w++) {
-                if (Piece.board[l][w] == null) {
+        for (int l = 0; l < Piece.board.length; l++) {
+            for (int w = 0; w < Piece.board[l].length; w++) {
+                if (Piece.board[w][l] == null) {
                     if (whiteSquare) System.out.print(" □ ");
                     else System.out.print(" ■ ");
-                } else {             
+                } else {
+                    System.out.print(" " + Piece.board[w][l] + " ");
                 }
                 whiteSquare = !whiteSquare;
             }

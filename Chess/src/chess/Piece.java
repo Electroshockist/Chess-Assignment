@@ -4,8 +4,9 @@ public abstract class Piece implements Coordinates{
     public int x; 
     public int y;
     //piece type and team
-    public String symbol, team;
+    public String symbol,team;
     
+    //to keep naming consistent
     public static final String pawn = "pawn";
     public static final String rook = "rook";
     public static final String knight = "knight";
