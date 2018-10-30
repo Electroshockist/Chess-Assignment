@@ -49,8 +49,7 @@ public class Board {
         }
     }
     
-    public static void displayBoard(){
-        
+    public void displayBoard(){
         boolean whiteSquare = true;
         for (int l = 0; l < Piece.board.length; l++) {
             for (int w = 0; w < Piece.board[l].length; w++) {
