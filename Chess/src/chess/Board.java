@@ -49,10 +49,14 @@ public class Board {
         }
     }
     
-    public void displayBoard(){
+    public static void displayBoard(){
+        
         boolean whiteSquare = true;
+        System.out.println("-1---2--3---4--5---6--7---8");
         for (int l = 0; l < Piece.board.length; l++) {
+                            System.out.print(l+1);
             for (int w = 0; w < Piece.board[l].length; w++) {
+
                 if (Piece.board[w][l] == null) {
                     if (whiteSquare) System.out.print(" □ ");
                     else System.out.print(" ■ ");

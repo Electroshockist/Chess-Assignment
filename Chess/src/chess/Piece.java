@@ -15,13 +15,13 @@ public abstract class Piece implements Coordinates{
     public static final String queen = "queen";
     
     public boolean canMoveTo(int x_, int y_){
-        return board[x][y] == null;
+        return board[x_][y_] == null;
     }
     public void moveTO(int x, int y){
         if (canMoveTo(x, y)){
             //update position
             board[this.x][this.y] = null;
-            board[x][y] = team;
+            board[x][y] = symbol;
             this.x = x;
             this.y = y;
         }
