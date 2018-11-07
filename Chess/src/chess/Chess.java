@@ -5,20 +5,22 @@ public class Chess {
       static Scanner scanner = new Scanner(System.in);
       
     public static void main(String[] args) throws ClassNotFoundException {
-        String file = "output.ser";
+        
         boolean gameRun = true;
         int posX;
         int posY;
         int movX;
         int movY;
-        Board board = new Board();        
+        Board board;        
         
         System.out.println("Load or new game?");
         
-        String load = scanner.nextLine();
+        boolean doLoad = scanner.nextLine().equals("load");
+        board = new Board(doLoad);
+        
         try{
-            if(load.equals("load")) {
-                board.load(file);
+            if(doLoad) {
+                board.load(board.file);
                 System.out.println("loaded");
             }
             else System.out.println("not loaded");
@@ -31,11 +33,7 @@ public class Chess {
         //based on the odd or even of the turn timer determine player turn
         System.out.println("White player moves first");
         while(gameRun == true){
-
-            //System.out.println(board.whiteRook[0].x);
-            //System.out.println(board.whiteRook[0].y);
-
-             board.displayBoard();
+             Board.displayBoard();
              if(Piece.turn % 2 == 0){System.out.println("white player turn");}
              else{System.out.println("black player turn");}
 
@@ -64,13 +62,12 @@ public class Chess {
                 }
             }
             try{
-                board.save(file);
+                board.save(board.file);
             }
             catch(IOException e){
                 System.err.println(e);
             }
-                
-                Piece.turn++;
+            Piece.turn++;
             }
         }
     }
