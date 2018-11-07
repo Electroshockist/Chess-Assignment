@@ -1,10 +1,15 @@
 package chess;
-public abstract class Piece implements Coordinates{      
+
+import java.io.Serializable;
+
+public abstract class Piece implements Coordinates, Serializable{      
     //piece position
     public int x; 
     public int y;
     //piece type and team
     public String symbol,team;
+    
+    public static int turn = 0;
     
     //to keep naming consistent
     public static final String pawn = "pawn";
