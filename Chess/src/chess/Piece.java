@@ -9,7 +9,7 @@ public abstract class Piece implements Coordinates, Serializable{
     //piece type and team
     public String symbol,team;
     
-    public static int turn = 0;
+    public static int turn;
     
     //to keep naming consistent
     public static final String pawn = "pawn";

@@ -11,6 +11,7 @@ public class Chess {
         int posY;
         int movX;
         int movY;
+        String doSave;
         Board board;        
         
         System.out.println("Load or new game?");
@@ -31,9 +32,10 @@ public class Chess {
         
         //use input to grab player actions add a save and quit function later.
         //based on the odd or even of the turn timer determine player turn
-        System.out.println("White player moves first");
         while(gameRun == true){
+            System.out.println("turn:" + Piece.turn);
              Board.displayBoard();
+             
              if(Piece.turn % 2 == 0){System.out.println("white player turn");}
              else{System.out.println("black player turn");}
 
@@ -61,12 +63,18 @@ public class Chess {
                      if (blackPiece.x == posX && blackPiece.y == posY) blackPiece.moveTO(movX, movY);
                 }
             }
-            try{
+            System.out.println("save or continue?");
+             doSave = scanner.next();
+             if(doSave.endsWith("save")){
+             try{
                 board.save(board.file);
+                System.out.println("Saved");
             }
             catch(IOException e){
                 System.err.println(e);
+                }
             }
+             else System.out.println("did not save");
             Piece.turn++;
             }
         }
