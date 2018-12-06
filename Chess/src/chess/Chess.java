@@ -1,34 +1,30 @@
 package chess;
 import java.util.Scanner;
 import java.io.IOException;
-public class Chess {
+public class Chess implements Values{
       static Scanner scanner = new Scanner(System.in);
       
     public static void main(String[] args) throws ClassNotFoundException {
         
         boolean gameRun = true;
-        int posX;
-        int posY;
-        int movX;
-        int movY;
         String doSave;
         Board board;        
         
-        System.out.println("Load or new game?");
+//        System.out.println("Load or new game?");
+//        
+//        boolean doLoad = scanner.nextLine().equals("load");
+        board = new Board(false);
         
-        boolean doLoad = scanner.nextLine().equals("load");
-        board = new Board(doLoad);
-        
-        try{
-            if(doLoad) {
-                board.load(board.file);
-                System.out.println("loaded");
-            }
-            else System.out.println("not loaded");
-        }
-        catch(IOException e){
-            System.err.println(e);
-        }
+//        try{
+//            if(doLoad) {
+//                board.load(board.file);
+//                System.out.println("loaded");
+//            }
+//            else System.out.println("not loaded");
+//        }
+//        catch(IOException e){
+//            System.err.println(e);
+//        }
         
         //use input to grab player actions add a save and quit function later.
         //based on the odd or even of the turn timer determine player turn
@@ -40,41 +36,41 @@ public class Chess {
              else{System.out.println("black player turn");}
 
             System.out.println("Provide x of piece you would like to move");
-            posX=scanner.nextInt()-1;
+            Board.selection[0]=scanner.nextInt()-1;
 
             System.out.println("Provide y of piece you would like to move");
-            posY=scanner.nextInt()-1;
+            Board.selection[1]=scanner.nextInt()-1;
 
             System.out.println("Provide x of where you would like to move");
-            movX=scanner.nextInt()-1;
+            Board.moveTo[0]=scanner.nextInt()-1;
 
             System.out.println("Provide y of where you would like to move");
-            movY=scanner.nextInt()-1;
+            Board.moveTo[1]=scanner.nextInt()-1;
 
             if(Piece.turn % 2 == 0){
-                 //team is white
-                 for (WhitePiece whitePiece : board.whitePieces) {
-                     if (whitePiece.x == posX && whitePiece.y == posY) whitePiece.moveTO(movX, movY);
-                 }
+                //team is white
+                if (Board.coordinates[Board.selection[0]] [Board.selection[1]].team.equals(White)){
+                    Board.coordinates[Board.selection[0]] [Board.selection[1]].moveTO(Board.moveTo[0], Board.moveTo[1]);
+                }
             }
             else {
                  //team is black
-                 for (BlackPiece blackPiece : board.blackPieces) {
-                     if (blackPiece.x == posX && blackPiece.y == posY) blackPiece.moveTO(movX, movY);
+                if (Board.coordinates[Board.selection[0]] [Board.selection[1]].team.equals(White)){
+                    Board.coordinates[Board.selection[0]] [Board.selection[1]].moveTO(Board.moveTo[0], Board.moveTo[1]);
                 }
             }
-            System.out.println("save or continue?");
-             doSave = scanner.next();
-             if(doSave.endsWith("save")){
-             try{
-                board.save(board.file);
-                System.out.println("Saved");
-            }
-            catch(IOException e){
-                System.err.println(e);
-                }
-            }
-             else System.out.println("did not save");
+//            System.out.println("save or continue?");
+//             doSave = scanner.next();
+//             if(doSave.endsWith("save")){
+//             try{
+//                board.save(board.file);
+//                System.out.println("Saved");
+//            }
+//            catch(IOException e){
+//                System.err.println(e);
+//                }
+//            }
+//             else System.out.println("did not save");
             Piece.turn++;
             }
         }

@@ -2,10 +2,11 @@ package chess;
 
 import java.io.Serializable;
 
-public abstract class Piece implements Coordinates, Values, Serializable{      
+public abstract class Piece implements Values, Serializable{      
     //piece position
     public int x; 
     public int y;
+    
     //piece type and team
     public String symbol, team, type;
     
@@ -41,7 +42,7 @@ public abstract class Piece implements Coordinates, Values, Serializable{
                 }
             break;
             
-            case Values.Black:
+            case Black:
                 switch (type){                    
                     case pawn:
                         symbol = "♟";
@@ -65,18 +66,18 @@ public abstract class Piece implements Coordinates, Values, Serializable{
             break;
         }
         
-        board[x][y] = symbol;
+        Board.coordinates[x][y] = symbol;
     }
     
     public boolean canMoveTo(int x_, int y_){
-        return board[x_][y_] == null;
+        return Board.coordinates[x_][y_] == null;
     }
     
     public void moveTO(int x, int y){
         if (canMoveTo(x, y)){
             //update position
-            board[this.x][this.y] = null;
-            board[x][y] = symbol;
+            Board.coordinates[this.x][this.y] = null;
+            Board.coordinates[x][y] = symbol;
             this.x = x;
             this.y = y;
         }

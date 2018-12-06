@@ -1,9 +1,9 @@
 package chess;
 public interface Values {
+    //to keep naming consistent
     public String White = "White";
     public String Black = "Black";
     
-        //to keep naming consistent
     public String pawn = "pawn";
     public String rook = "rook";
     public String knight = "knight";
